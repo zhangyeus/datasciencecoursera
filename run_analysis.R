@@ -37,7 +37,7 @@ run_analysis <- function(directory = "~/coursera/dataclean/Week3/UCI\ HAR\ Datas
         index <- arrange(index, order(subject, activity))
         
         avg <- data.frame()
-        for (i in nrow(index)) {
+        for (i in 1:nrow(index)) {
             avg <- rbind(avg, c(index[i,1], index[i,2], colMeans(finalData[finalData$subject == index[i,1] & finalData$activity == index[i,2],-(1:2)])))        
         }
         colnames(avg) <- c("subject", "activity", as.vector(lapply(meanstd[,2], paste0, ".avg")))
